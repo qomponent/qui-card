@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+  <head>
+    <title>Card web component demo</title>
+    <script type="module" src="./qui-card.js"></script>
+    <style>
+        .cards {
+            display: flex;
+            /* justify-content: space-between; */
+            gap: 30px;
+        }
+        .cardcontents{
+            display: flex;
+            padding: 10px;
+        }
+    </style>
+
+  </head>
+  <body>
+    <h1>Card</h1>
+    <div class="cards">
+        <qui-card header="Basic Heading">
+            <div slot="content">
+                <div class="cardcontents">
+                    <span>Hello</span>
+                </div>
+            </div>
+        </qui-card>
+
+        <qui-card>
+            <div slot="header">
+                <span>Complex Heading</span>
+            </div>
+            <div slot="content">
+                <div class="cardcontents">
+                    <span>Hello</span>
+                </div>
+            </div>
+        </qui-card>
+
+        <qui-card header="Basic Footer" footer="Here the footer">
+            <div slot="content">
+                <div class="cardcontents">
+                    <span>Hello</span>
+                </div>
+            </div>
+        </qui-card>
+
+        <qui-card header="Complex Footer">
+            <div slot="content">
+                <div class="cardcontents">
+                    <span>Hello</span>
+                </div>
+            </div>
+            <div slot="footer">
+                 <span>Here the footer</span>   
+            </div>
+        </qui-card>
+
+        <qui-card actionable>
+            <div slot="header">
+                <span>actionable</span>
+            </div>
+            <div slot="content">
+                <div class="cardcontents">
+                    <span>Hello</span>
+                </div>
+            </div>
+            <div slot="footer">
+                <span>Here the footer</span>
+            </div>
+        </qui-card>
+  </body>
+</html>

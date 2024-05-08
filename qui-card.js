@@ -83,7 +83,7 @@ export class QuiCard extends LitElement {
         } else {
             return html`
             <div class="card-header">
-                <slot name="header"></slot>
+                <slot name="header" style="width: ${this.width};"></slot>
             </div>`;
         }
     }
@@ -97,7 +97,7 @@ export class QuiCard extends LitElement {
         } else {
             return html`
             <div class="card-footer">
-                <slot name="footer"></slot>
+                <slot name="footer" style="width: ${this.width};"></slot>
             </div>`;
         }
     }

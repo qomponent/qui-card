@@ -14,11 +14,20 @@ export class QuiCard extends LitElement {
             border-radius: 10px;
             color: var(--lumo-contrast, hsla(214, 35%, 15%, 1.0));
             box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-            transition: box-shadow 0.2s ease;
+            transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
         }
 
         .actionable:hover {
             box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .inactive {
+            opacity: 0.75;
+        }
+
+        .inactive:hover {
+            opacity: 1;
         }
 
         .card-header {
@@ -50,12 +59,16 @@ export class QuiCard extends LitElement {
         footer: {type: String},
         width: {state: true},
         actionable: {type: Boolean},
+        accent: {type: String},
+        inactive: {type: Boolean},
     };
 
     constructor(){
         super();
         this.width = "100%";
         this.actionable = false;
+        this.accent = null;
+        this.inactive = false;
     }
 
     connectedCallback() {
@@ -63,12 +76,15 @@ export class QuiCard extends LitElement {
     }
 
     render() {
-        let c = "card";
-        if(this.actionable){
-            c = "card actionable";
-        }
+        const classes = ["card"];
+        if(this.actionable) classes.push("actionable");
+        if(this.inactive) classes.push("inactive");
 
-        return html`<div class="${c}" style="width: ${this.width};">
+        const accentStyle = this.accent
+            ? `width: ${this.width}; border-left: 3px solid ${this.accent};`
+            : `width: ${this.width};`;
+
+        return html`<div class="${classes.join(' ')}" style="${accentStyle}">
                 ${this._headerTemplate()}
                 <slot name="content"></slot>
                 ${this._footerTemplate()}

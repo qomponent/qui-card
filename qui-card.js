@@ -6,10 +6,17 @@ import { LitElement, html, css} from 'lit';
 export class QuiCard extends LitElement {
 
     static styles = css`
+        :host {
+            display: block;
+            height: 100%;
+        }
+
         .card {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
+            box-sizing: border-box;
             border: 1px solid var(--lumo-contrast-10pct, hsla(214, 57%, 24%, 0.1));
             border-radius: 10px;
             color: var(--lumo-contrast, hsla(214, 35%, 15%, 1.0));
